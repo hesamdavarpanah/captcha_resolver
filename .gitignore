@@ -1,0 +1,5 @@
+/venv/
+/api/test_main.http
+/user.txt
+/captcha_solver.html
+/captcha_solver_files/
