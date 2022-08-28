@@ -3,7 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import visibility_of_element_located
 import pyautogui
-from os import path
+from os import path, rename, remove
+from shutil import rmtree
 from time import sleep
 
 
@@ -25,6 +26,10 @@ class CaptchaDownloader:
         sleep(1)
         pyautogui.typewrite(f"{dir_path}")
         pyautogui.hotkey("enter")
+        sleep(2)
+        rename("captcha_solver_files/Index", "captcha.jpg")
+        rmtree("captcha_solver_files")
+        remove("captcha_solver.html")
 
     def captcha_sender(self, captcha_input_xpath, captcha_data):
         try:
@@ -57,7 +62,3 @@ class CaptchaDownloader:
         except Exception:
             self.status_code = 400
         return self.status_code
-
-
-c = CaptchaDownloader(url="https://sayancard.ir/Customer/POSRequest")
-print(c.captcha_downloader("""//*[@id="imgCaptcha"]"""))
