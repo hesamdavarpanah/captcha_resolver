@@ -10,9 +10,10 @@ class DSP:
         self.image = Image.open("captcha.jpg")
         self.cv2img = cv2.imread("captcha.jpg")
 
+    @property
     def get_color(self):
         colors_x = extcolors.extract_from_image(self.image, tolerance=5)
-        single_color = colors_x[0][2][0]
+        single_color = colors_x[0][1][0]
         start_color_range = tuple(np.subtract(single_color, (30, 30, 30)))
         start_color_range1 = np.asarray(start_color_range)
         end_color_range = tuple(np.add(single_color, (50, 50, 50)))
@@ -34,22 +35,25 @@ class DSP:
         for loop1 in range(height):
             for loop2 in range(width):
                 r, g, b = image_data[loop1, loop2]
-                if not (start_color_range[0] < r < end_color_range[0]) and not \
-                        (start_color_range[1] < g < end_color_range[1]) and not \
-                        (start_color_range[2] < b < end_color_range[2]):
+                if (start_color_range[0] < r < end_color_range[0]) and (start_color_range[1] < g < end_color_range[1]) and (
+                        start_color_range[2] < b < end_color_range[2]):
+                    pass
+                else:
                     image_data[loop1, loop2] = 0, 0, 0
 
         open_cv_image = np.array(self.image)
 
         open_cv_image = open_cv_image[:, :, ::-1].copy()
+        conv_img_down0 = cv2.pyrDown(open_cv_image)
+        conv_img_down3 = cv2.pyrUp(conv_img_down0)
 
         kernel = np.ones((2, 2), np.float32) / (2 * 2)
-        conv_img = cv2.filter2D(open_cv_image, -1, kernel)
+        conv_img = cv2.filter2D(conv_img_down3, -1, kernel)
 
         img = cv2.cvtColor(conv_img, cv2.COLOR_BGR2GRAY)
         blur = cv2.GaussianBlur(img, (1, 1), 0)
-        ret, thresh = cv2.threshold(blur, 44, 255, cv2.THRESH_BINARY)
-        return thresh
+        ret1, th1 = cv2.threshold(blur, 44, 255, cv2.THRESH_BINARY)
+        return th1
 
     def image_editor2(self, start_color_range, end_color_range):
         rgb = cv2.cvtColor(self.cv2img, cv2.COLOR_BGR2RGB)

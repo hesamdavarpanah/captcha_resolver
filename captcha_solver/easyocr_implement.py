@@ -11,6 +11,7 @@ class MyEasyOCR:
         self.gpu_mode = gpu_mode
         self.allow_list = "ABbCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
+    @property
     def easy_result(self):
         warnings.filterwarnings("ignore", category=UserWarning)
         reader = Reader([self.language], gpu=self.gpu_mode, verbose=False)
