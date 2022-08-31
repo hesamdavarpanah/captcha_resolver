@@ -7,7 +7,6 @@ from captcha_solver.easyocr_implement import MyEasyOCR
 from captcha_solver.mongodb_config import MongoDBConfiguration
 from captcha_solver.logger import Logger
 from api.core.exception_handler import ExceptionHandler
-import matplotlib.pyplot as plt
 
 app = FastAPI()
 
@@ -32,6 +31,14 @@ async def user_bruteforce(data: User):
                 data_sender.clear_xpath(data_dict["user_xpath"])
                 data_sender.user_sender(data_dict["user_xpath"], user)
                 data_sender.submit(data_dict["submit_xpath"])
+                status = data_sender.check_vul_exist()
+                handler = ExceptionHandler(status)
+                logger.mongodb_insert_one(coll, {handler: status})
+                return handler.exception_sender
+
+            if data_sender.user_error(data_dict["user_error_xpath"]) == 401:
+                handler = ExceptionHandler(401)
+                logger.mongodb_insert_one(coll, {handler: 401})
 
             data_sender.captcha_downloader(data_dict["captcha_image_name"])
             dsp = DSP()
@@ -41,9 +48,23 @@ async def user_bruteforce(data: User):
             data_sender.clear_xpath(data_dict["user_xpath"])
             data_sender.user_sender(data_dict["user_xpath"], user)
             data_sender.submit(data_dict["submit_xpath"])
-        except FileNotFoundError as e:
-            pass
-    # logger.mongodb_insert_one(coll, {"test": "test"})
+            status = data_sender.check_vul_exist()
+            handler = ExceptionHandler(status)
+            logger.mongodb_insert_one(coll, {handler: status})
+            return handler.exception_sender
+        except FileNotFoundError:
+            data_sender.captcha_downloader(data_dict["captcha_image_name"])
+            dsp = DSP()
+            image = dsp.image_editor(dsp.get_color[0]["start"], dsp.get_color[0]["end"])
+            captcha_data = MyEasyOCR(image, data_dict["gpu_mode"], data_dict["captcha_language"])
+            data_sender.captcha_sender(data_dict["captcha_xpath"], captcha_data.easy_result)
+            data_sender.clear_xpath(data_dict["user_xpath"])
+            data_sender.user_sender(data_dict["user_xpath"], user)
+            data_sender.submit(data_dict["submit_xpath"])
+            status = data_sender.check_vul_exist()
+            handler = ExceptionHandler(status)
+            logger.mongodb_insert_one(coll, {handler: status})
+            return handler.exception_sender
 
 
 @app.post("/user-pass-bruteforce/", tags=["userpass-login-brute-force"])
