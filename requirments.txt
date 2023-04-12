@@ -1,0 +1,13 @@
+selenium==4.5.0
+beautifulsoup4==4.11.1
+chromedriver-autoinstaller==0.4.0
+easyocr==1.6.2
+extcolors==1.0.0
+fastapi==0.79.0
+numpy==1.23.3
+Pillow==9.2.0
+PyAutoGUI==0.9.53
+requests==2.28.1
+scikit-image==0.19.3
+scipy==1.9.2
+pymongo==4.2.0

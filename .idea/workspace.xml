@@ -2,8 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12079aeb-82e8-439a-88a6-610ce5fac9ae" name="Changes" comment="Captcha Solver v1.1">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/core/exception_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/core/exception_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/core/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/core/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models/data_structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/data_structure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/2e7a695a-e5c8-4d12-a8af-9522d7f46a24.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/351be5b6-6314-42c5-a71a-602e5f367125.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/35a2d157-8ec1-4ab8-bf3a-d6d7da644e28.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/3616e5d5-7bf5-4979-90aa-41e40f5efb72.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/73be5a9b-0f31-4d98-9347-d7158899e2fc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/7c2a35f3-f183-4669-a42c-d579559a9595.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/d035a63d-3fba-4151-b629-84a06e196ba6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/eae14e4b-9e3d-4013-b995-d49572f44773.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_images_solved/eec53f98-ed1e-42e0-8e5c-3f93ff90fd8b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_solver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_solver/data_sender.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_solver/easyocr_implement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_solver/file_reader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_solver/image_processing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_solver/logger.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/captcha_solver/mongodb_config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +37,9 @@
         <option value="FastAPI test_main" />
         <option value="package.json" />
         <option value="Python Unit Test" />
+        <option value="Blank Requirements File" />
         <option value="Python Script" />
+        <option value="docker-compose" />
       </list>
     </option>
   </component>
@@ -33,24 +55,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/hesam/Desktop/PycharmProjects/captcha_resolver&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/captcha_solver/captcha_images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/captcha_solver_files" />
       <recent name="$PROJECT_DIR$/api" />
+      <recent name="$PROJECT_DIR$/captcha_solver_files" />
       <recent name="$PROJECT_DIR$/api/core" />
       <recent name="$PROJECT_DIR$/captcha_solver" />
     </key>
@@ -183,8 +206,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.data_sender" />
         <item itemvalue="Python.image_processing" />
+        <item itemvalue="Python.data_sender" />
         <item itemvalue="Python.easyocr_implement" />
         <item itemvalue="Python.colorRemove" />
       </list>
@@ -219,6 +242,32 @@
       <workItem from="1661832133792" duration="14162000" />
       <workItem from="1661850512070" duration="40000" />
       <workItem from="1661951851963" duration="4267000" />
+      <workItem from="1662014499806" duration="743000" />
+      <workItem from="1662529413608" duration="4892000" />
+      <workItem from="1663738128988" duration="8119000" />
+      <workItem from="1663746589798" duration="94000" />
+      <workItem from="1663746723914" duration="379000" />
+      <workItem from="1663747206782" duration="51000" />
+      <workItem from="1663747623164" duration="3610000" />
+      <workItem from="1663754143710" duration="21000" />
+      <workItem from="1663764649485" duration="730000" />
+      <workItem from="1663845283373" duration="974000" />
+      <workItem from="1663846332529" duration="83000" />
+      <workItem from="1663846449081" duration="379000" />
+      <workItem from="1663846842474" duration="5390000" />
+      <workItem from="1664628738694" duration="4234000" />
+      <workItem from="1664635234513" duration="626000" />
+      <workItem from="1664694487568" duration="247000" />
+      <workItem from="1664867111311" duration="8000" />
+      <workItem from="1664867424311" duration="19000" />
+      <workItem from="1665210410476" duration="65000" />
+      <workItem from="1665214493864" duration="370000" />
+      <workItem from="1665561747337" duration="2283000" />
+      <workItem from="1665826157683" duration="2676000" />
+      <workItem from="1665839362974" duration="326000" />
+      <workItem from="1665840893351" duration="5000" />
+      <workItem from="1680821275294" duration="226000" />
+      <workItem from="1680988084143" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="Captcha Solver v1.0">
       <created>1661685482025</created>
@@ -285,12 +334,12 @@
     <option name="LAST_COMMIT_MESSAGE" value="Captcha Solver v1.1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/captcha_resolver$t.coverage" NAME="t Coverage Results" MODIFIED="1660719527780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/captcha_resolver$colorRemove.coverage" NAME="colorRemove Coverage Results" MODIFIED="1661081386633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/captcha_resolver$captcha_getter.coverage" NAME="captcha_getter Coverage Results" MODIFIED="1661694501292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/captcha_resolver$test.coverage" NAME="test Coverage Results" MODIFIED="1661953987184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/captcha_resolver$file_reader.coverage" NAME="file_reader Coverage Results" MODIFIED="1661079399558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/captcha_solver" />
+    <SUITE FILE_PATH="coverage/captcha_resolver$test.coverage" NAME="test Coverage Results" MODIFIED="1665827339089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/captcha_resolver$image_processing.coverage" NAME="image_processing Coverage Results" MODIFIED="1663739463023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/captcha_solver" />
+    <SUITE FILE_PATH="coverage/captcha_resolver$t.coverage" NAME="t Coverage Results" MODIFIED="1660719527780" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/captcha_resolver$captcha_getter.coverage" NAME="captcha_getter Coverage Results" MODIFIED="1661694501292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/captcha_resolver$colorRemove.coverage" NAME="colorRemove Coverage Results" MODIFIED="1661081386633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/captcha_resolver$easyocr_implement.coverage" NAME="easyocr_implement Coverage Results" MODIFIED="1661586297794" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/captcha_resolver$image_processing.coverage" NAME="image_processing Coverage Results" MODIFIED="1661690283483" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/captcha_solver" />
   </component>
 </project>

@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  mongodb:
+    image: "mongo:latest"
+    container_name: "mongodb-container"
+    ports:
+      - "27017:27017"
+
+  captcha-solver:
+    container_name: "captcha-solver"
+    build:
+      context: ./
+    environment:
+      - MONGODB_SCHEMA= mongodb
+      - MONGODB_HOST= localhost
+      - MONGODB_PORT= 27017
+      - MONGODB_USERNAME= admin
+      - MONGODB_PASSWORD= admin
+    command:
+      uvicorn api.core.main:app --host 0.0.0.0 --port 8001 --reload
+
+networks:
+  test_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24

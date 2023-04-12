@@ -15,6 +15,9 @@ class MyEasyOCR:
     def easy_result(self):
         warnings.filterwarnings("ignore", category=UserWarning)
         reader = Reader([self.language], gpu=self.gpu_mode, verbose=False)
-        result = reader.readtext(self.image, allowlist=self.allow_list, detail=False).pop()
-        Path("captcha.jpg").rename(f"captcha_images_solved/{uuid4()}.jpg")
-        return result
+        result = reader.readtext(self.image, allowlist=self.allow_list, detail=False)
+        if result:
+            Path("captcha.jpg").rename(f"captcha_images_solved/{uuid4()}.jpg")
+            return result.pop()
+        else:
+            return None

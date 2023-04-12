@@ -13,20 +13,8 @@ class DSP:
     @property
     def get_color(self):
         colors_x = extcolors.extract_from_image(self.image, tolerance=5)
-        single_color = colors_x[0][1][0]
-        start_color_range = tuple(np.subtract(single_color, (30, 30, 30)))
-        start_color_range1 = np.asarray(start_color_range)
-        end_color_range = tuple(np.add(single_color, (50, 50, 50)))
-        end_color_range1 = np.asarray(end_color_range)
-        color1 = {
-            "start": start_color_range,
-            "end": end_color_range
-        }
-        color2 = {
-            "start": start_color_range1,
-            "end": end_color_range1
-        }
-        return color1, color2
+        single_color = colors_x[0][2][0]
+        return single_color
 
     def image_editor(self, start_color_range, end_color_range):
         image_data = self.image.load()
@@ -35,10 +23,9 @@ class DSP:
         for loop1 in range(height):
             for loop2 in range(width):
                 r, g, b = image_data[loop1, loop2]
-                if (start_color_range[0] < r < end_color_range[0]) and (start_color_range[1] < g < end_color_range[1]) and (
-                        start_color_range[2] < b < end_color_range[2]):
-                    pass
-                else:
+                if not (start_color_range[0] < r < end_color_range[0]) \
+                        and not (start_color_range[1] < g < end_color_range[1]) \
+                        and not (start_color_range[2] < b < end_color_range[2]):
                     image_data[loop1, loop2] = 0, 0, 0
 
         open_cv_image = np.array(self.image)
@@ -55,7 +42,18 @@ class DSP:
         ret1, th1 = cv2.threshold(blur, 44, 255, cv2.THRESH_BINARY)
         return th1
 
-    def image_editor2(self, start_color_range, end_color_range):
+    def image_editor2(self, color_range):
+        start_range = []
+        end_range = []
+        for color in color_range:
+            if color >= 220:
+                start_range.append(color - 30)
+                end_range.append(255)
+            else:
+                start_range.append(color - 30)
+                end_range.append(color + 30)
+        start_color_range = np.array(start_range)
+        end_color_range = np.array(end_range)
         rgb = cv2.cvtColor(self.cv2img, cv2.COLOR_BGR2RGB)
         msk = cv2.inRange(rgb, start_color_range, end_color_range)
         krn = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 3))
@@ -81,7 +79,7 @@ class DSP:
                 img2[labels == i + 1] = 255
 
         res = cv2.bitwise_not(img2)
-        plt.imshow(res)
-        plt.show()
 
         return res
+
+

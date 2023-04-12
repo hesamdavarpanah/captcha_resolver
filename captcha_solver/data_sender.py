@@ -1,7 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.expected_conditions import visibility_of_element_located
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import pyautogui
 from json import loads
@@ -10,6 +8,8 @@ from shutil import rmtree
 from time import sleep
 from PIL import Image
 from selenium.common.exceptions import NoSuchElementException
+import getpass
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 class DataSender:
@@ -20,32 +20,34 @@ class DataSender:
         self.options.add_experimental_option("detach", True)
         capabilities = DesiredCapabilities.CHROME.copy()
         capabilities['goog:loggingPrefs'] = {'performance': 'ALL'}
-        self.browser = webdriver.Chrome(options=self.options, desired_capabilities=capabilities)
+        self.browser = webdriver.Chrome(ChromeDriverManager().install(), options=self.options,
+                                        desired_capabilities=capabilities)
         self.browser.set_page_load_timeout(120)
         self.browser.get(url=self.url)
         self.logs = self.browser.get_log('performance')
         self.status_code = None
 
     def captcha_downloader(self, captcha_image_name):
-        dir_path = path.dirname(path.realpath(__file__))
+        user = getpass.getuser()
         sleep(3)
         pyautogui.hotkey("ctrl", "s")
         sleep(1)
-        pyautogui.typewrite(f"{dir_path}")
+        pyautogui.typewrite("captcha_solver")
         pyautogui.hotkey("enter")
         sleep(2)
         filename, file_extension = path.splitext(captcha_image_name)
         if file_extension == ".png":
-            img = Image.open(f"captcha_solver_files/{captcha_image_name}")
-            new_img = Image.new("RGBA", img.size, "WHITE")
-            new_img.paste(img, (0, 0), img)
-            new_img.convert('RGB').save('captcha.jpg', "JPEG")
-            rmtree("captcha_solver_files")
-            remove("captcha_solver.html")
+            img = Image.open(f"/home/{user}/Downloads/captcha_solver_files/{captcha_image_name}")
+            img.save('captcha.jpg', "JPEG")
+            rmtree(f"/home/{user}/Downloads/captcha_solver_files")
+            remove(f"/home/{user}/Downloads/captcha_solver.html")
         else:
-            rename(f"captcha_solver_files/{captcha_image_name}", "captcha.jpg")
-            rmtree("captcha_solver_files")
-            remove("captcha_solver.html")
+            rename(f"/home/{user}/Downloads/captcha_solver_files/{captcha_image_name}", "captcha.jpg")
+            rmtree(f"/home/{user}/Downloads/captcha_solver_files")
+            remove(f"/home/{user}/Downloads/captcha_solver.html")
+
+    def window_closer(self):
+        pyautogui.hotkey("alt", "f4")
 
     def captcha_sender(self, captcha_input_xpath, captcha_data):
         try:
@@ -95,9 +97,10 @@ class DataSender:
             self.status_code = 429
         except NoSuchElementException:
             self.status_code = 200
+            return self.status_code
         except Exception:
             self.status_code = 400
-        return self.status_code
+            return self.status_code
 
     def user_error(self, user_error_xpath):
         try:
@@ -128,11 +131,8 @@ class DataSender:
                     statuses.append(d['message']['params']['response']['status'])
         for i in statuses:
             if not i == 200:
-                self.status_code = 200
+                self.status_code = 500
                 return self.status_code
             else:
-                self.status_code = 500
+                self.status_code = 200
         return self.status_code
-
-    # def refresh(self):
-    #     self.browser.refresh()
