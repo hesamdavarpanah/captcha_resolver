@@ -24,4 +24,4 @@ To run the tests, use this command: `docker-compose run web pytest`
 
 ## License
 
-This project is licensed under the Apache License 2.0. See the [LICENSE] file for more details.
+This project is licensed under the Apache License 2.0. See the [[LICENSE]](https://github.com/hesamdavarpanah/CRUD-RDF-data/blob/main/LICENSE)https://github.com/hesamdavarpanah/CRUD-RDF-data/blob/main/LICENSE file for more details.
